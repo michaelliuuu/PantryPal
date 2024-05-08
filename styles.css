@@ -1,0 +1,38 @@
+h1 {
+    text-align: center;
+}
+
+#frontPage {
+    text-align: center;
+}
+
+#recipePage {
+    text-align: center;
+}
+
+.popup {
+    visibility: hidden;  /* Hide popup by default */
+    min-width: 150px;    /* Set a minimum width */
+    background-color: #333; /* Dark background */
+    color: #fff;         /* White text color */
+    text-align: center;
+    border-radius: 6px;  /* Rounded corners */
+    padding: 8px 0;      /* Padding */
+    position: fixed;     /* Fixed positioning */
+    z-index: 1;          /* Sit on top of other content */
+    left: 50%;           /* Center the popup horizontally */
+    bottom: 20px;        /* Position at the bottom */
+    transform: translateX(-50%); /* Center align the popup */
+    opacity: 0;          /* Start fully transparent */
+    transition: opacity 0.5s, visibility 0.5s; /* Transition for fading in/out */
+}
+
+.dynamic-border {
+    border: 2px solid black; /* Style the border as needed */
+    display: inline-block; /* Ensures the div does not take full width */
+    padding: 10px; /* Adds some spacing between the text and the border */
+    margin: 10px; /* Optional: Adds space around the div */
+    background-color: #f9f9f9; /* Optional: Background color */
+    font-size: 16px; /* Optional: Adjust font size */
+    font-family: Arial, sans-serif; /* Optional: Set font family */
+}
