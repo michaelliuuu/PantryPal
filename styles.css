@@ -1,5 +1,6 @@
 header {
     padding: 75px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 body {
@@ -16,6 +17,7 @@ h1 {
 
 #frontPage {
     text-align: center;
+    padding: 30px;
 }
 
 #recipePage {
