@@ -1,3 +1,15 @@
+header {
+    padding: 75px;
+}
+
+body {
+    background-image: url('images/pantry1.jpg');
+    width: 100%; /* or set to a specific width */
+    background-size: cover; /* cover or 100% 100% */
+    background-repeat: no-repeat;
+    background-position: 75% 25%; /* centers the background */
+}
+
 h1 {
     text-align: center;
 }
@@ -8,7 +20,18 @@ h1 {
 
 #recipePage {
     text-align: center;
+
 }
+
+#ingredientTB {
+    border-radius: 6px;  /* Rounded corners */
+    width: 200px;
+    height: 25px;
+}
+
+::placeholder {
+    text-align: center; 
+ }
 
 .popup {
     visibility: hidden;  /* Hide popup by default */
