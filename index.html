@@ -8,12 +8,21 @@
 </head>
 <body>
     <header>
-        <h1 id="title">PantryPal</h1>
+        <div id="container">
+            <div id="titleContainer">
+                <p id="title">pantrypal</p>
+            </div>
+            <div id="optionsContainer">
+                <a href="#" id="contact">contact</a>
+
+                <!-- <span id='clickableAwesomeFont'><i class="fa-regular fa-sun"></span> // create light/dark mode toggle-->
+            </div>
+        </div>
     </header>
     <main>
         <section id="frontPage" style="display: block;">
-            <h3>What do you have on hand?</h3>
-            <p>*assuming you have basic seasoning and ingredients</p>
+            <h1 id="titleText1">Create delicious meals with</h1>
+            <h1 id="titleText2">AI powered recipe creation</h1>
             <input type="text" id="ingredientTB" name="ingredientTB" placeholder="Enter ingredients..."><br><br>
             <button id="submitButton" type="button">Submit</button>
         </section>
@@ -23,6 +32,15 @@
             <button id="copyButton" type="button">Copy Recipe</button><br><br>
             <div id="content" class="dynamic-border"></div>
             <div id="popup" class="popup">Copied to clipboard!</div>
+        </section>
+        <section id="contactPage" style="display: none;">
+            <p class="name">Your Name</p>
+            <input type="text" class="nameText" name="name" style="display: block;" maxlength="30">
+            <p class="email">Email</p>
+            <input type="text" class="emailText" name="email" style="display: block;" maxlength="30">
+            <p class="email">Message</p>
+            <textarea name="text" id="messageText" cols="30" rows="10"></textarea><br>
+            <input type="submit" class="submitButton" value="Send"></button>
         </section>
     </main>
     <script type="importmap">

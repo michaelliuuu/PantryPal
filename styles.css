@@ -1,18 +1,50 @@
 header {
-    padding: 75px;
-    font-family: "Times New Roman", Times, serif;
+    /* padding: 75px; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background-image: url('images/pantry1.jpg');
+    /* background-image: url('images/pantry1.jpg'); */
     width: 100%; /* or set to a specific width */
-    background-size: cover; /* cover or 100% 100% */
-    background-repeat: no-repeat;
-    background-position: 75% 25%; /* centers the background */
+    /* background-size: cover; /* cover or 100% 100% */
+    /* background-repeat: no-repeat;
+    background-position: 75% 25%; centers the background */
+    background-color: black;
 }
 
-h1 {
-    text-align: center;
+#container {
+    display: flex;
+}
+
+#titleContainer {
+    margin-left: 25%;
+}
+
+#optionsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    margin-left: 39%;
+}
+
+#contact {
+    text-decoration: none;
+    color: #dddddd;
+}
+
+#title {
+    color: #dddddd;
+    font-weight: bold;
+}
+
+#titleText1, #titleText2 {
+    color: #dddddd;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#titleText2 {
+    margin-top: -10px;
 }
 
 #frontPage {
@@ -22,7 +54,6 @@ h1 {
 
 #recipePage {
     text-align: center;
-
 }
 
 #ingredientTB {
