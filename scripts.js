@@ -3,12 +3,16 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 // Global variables
 const submitB = document.getElementById("submitButton");
 const returnB = document.getElementById("returnButton");
+const contactLink = document.getElementById("contact");
+const homeLink = document.getElementById("home");
 const copyB = document.getElementById("copyButton");
 const shuffleB = document.getElementById("shuffleButton");
 const frontPage = document.getElementById("frontPage");
 const recipePage = document.getElementById("recipePage");
 const text = document.getElementsByName("ingredientTB").values;
 const content = document.getElementById("content");
+const sun = document.getElementById("sun");
+const moon = document.getElementById("moon");
 
 // AI global variables
 const API_KEY = "APIKEY";
@@ -55,8 +59,8 @@ submitB.addEventListener("click", function(event) {
         recipePage.style.display = "block";
     }
     frontPage.style.display = "none";
-
-    generateRecipe(prompt1);
+    contactPage.style.display = "none";
+    // generateRecipe(prompt1);
 });
 
 // Goes back to front page so user can change ingredients
@@ -66,6 +70,7 @@ returnB.addEventListener("click", function(event) {
         frontPage.style.display = "block";
     }
     recipePage.style.display = "none";
+    contactPage.style.display = "none";
 });
 
 // Gives a new recipe based on the ingredients given
@@ -78,4 +83,40 @@ copyB.addEventListener("click", function(event) {
     copyText();
 });
 
+// Goes to contact page
+contactLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (contactPage.style.display === "none") {
+        contactPage.style.display = "block";
+    }
+    recipePage.style.display = "none";
+    frontPage.style.display = "none";
+});
 
+// Goes back to front page
+homeLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (frontPage.style.display === "none") {
+        frontPage.style.display = "block";
+    }
+    recipePage.style.display = "none";
+    contactPage.style.display = "none";
+});
+
+// Light mode
+sun.addEventListener("click", function(event) {
+    event.preventDefault();
+    document.body.classList.remove("dark-mode");
+    document.body.classList.toggle("light-mode");
+    sun.style.display = "none";
+    moon.style.display = "block";
+});
+
+// Dark mode
+moon.addEventListener("click", function(event) {
+    event.preventDefault();
+    document.body.classList.remove("light-mode");
+    document.body.classList.toggle("dark-mode");
+    moon.style.display = "none";
+    sun.style.display = "block";
+});

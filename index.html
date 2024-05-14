@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PantryPal</title>
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <header>
         <div id="container">
             <div id="titleContainer">
-                <p id="title">pantrypal</p>
+                <a href="#" id="home">pantry pal</a>
             </div>
             <div id="optionsContainer">
                 <a href="#" id="contact">contact</a>
-
-                <!-- <span id='clickableAwesomeFont'><i class="fa-regular fa-sun"></span> // create light/dark mode toggle-->
+                <a href="#" class="toggleModeBtn">
+                    <i class="fa-regular fa-sun" style="display: block;" id="sun"></i>
+                </a>
+                <a href="#" class="toggleModeBtn">
+                    <i class="fa-regular fa-moon" style="display: none;" id="moon"></i>
+                </a>
             </div>
         </div>
     </header>
@@ -23,8 +28,9 @@
         <section id="frontPage" style="display: block;">
             <h1 id="titleText1">Create delicious meals with</h1>
             <h1 id="titleText2">AI powered recipe creation</h1>
-            <input type="text" id="ingredientTB" name="ingredientTB" placeholder="Enter ingredients..."><br><br>
-            <button id="submitButton" type="button">Submit</button>
+            <input type="text" id="ingredientTB" name="ingredientTB" placeholder="Enter ingredients"><br><br>
+            <button id="submitButton" type="button">Generate Recipe</button><br>
+            <img id="img" src="images/temporary.jpg" alt="temporary image">
         </section>
         <section id="recipePage" style="display: none;">
             <button id="returnButton" type="button">Return</button>
@@ -34,13 +40,16 @@
             <div id="popup" class="popup">Copied to clipboard!</div>
         </section>
         <section id="contactPage" style="display: none;">
-            <p class="name">Your Name</p>
-            <input type="text" class="nameText" name="name" style="display: block;" maxlength="30">
-            <p class="email">Email</p>
-            <input type="text" class="emailText" name="email" style="display: block;" maxlength="30">
-            <p class="email">Message</p>
-            <textarea name="text" id="messageText" cols="30" rows="10"></textarea><br>
-            <input type="submit" class="submitButton" value="Send"></button>
+            <h1 id="contactTitle">Contact Me</h1>
+            <form method="post" action="https://api.web3forms.com/submit">
+                <p class="contactTitles">Name</p>
+                <input type="text" class="contactText" name="name" style="display: block;" maxlength="30">
+                <p class="contactTitles">Email</p>
+                <input type="text" class="contactText" name="email" style="display: block;" maxlength="30">
+                <p class="contactTitles">Message</p>
+                <textarea name="text" id="messageText" class="contactText" ols="30" rows="10"></textarea><br>
+                <input type="submit" class="submitButton" value="Send"></button>
+            </form>
         </section>
     </main>
     <script type="importmap">
@@ -56,6 +65,8 @@
         const genAI = new GoogleGenerativeAI(API_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-pro"});
     </script>
+    <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script type="module" src="scripts.js"></script>
 </body>
 </html>

@@ -18,6 +18,7 @@ body {
 
 #titleContainer {
     margin-left: 25%;
+    margin-top: 16px;
 }
 
 #optionsContainer {
@@ -27,24 +28,76 @@ body {
     margin-left: 39%;
 }
 
-#contact {
+#contact, #home {
     text-decoration: none;
     color: #dddddd;
+    font-weight: bold;
 }
 
-#title {
-    color: #dddddd;
-    font-weight: bold;
+.fa-sun, .fa-moon {
+    color: white;
+    margin-left: 20px;
+    margin-top: 1px;
+}
+
+.light-mode {
+    background-color: white;
+    .fa-moon {
+        color: black;
+    }
+
+    #home {
+        color: black;
+    }
+
+    #contact {
+        color: black;
+    }
+
+    #titleText1, #titleText2 {
+        color: #111;
+    }
+
+    #ingredientTB {
+        background-color: white;
+        color: black;
+    }    
+}
+
+.dark-mode {
+    background-color: black;
+    .fa-sun {
+        color: #dddddd;
+    }
+
+    #home {
+        color: #dddddd;
+    }
+
+    #contact {
+        color: #dddddd;
+    }
+
+    #titleText1, #titleText2 {
+        color: #dddddd;
+    }
+
+    #ingredientTB {
+        background-color: #111;
+        color: #dddddd;
+    }
 }
 
 #titleText1, #titleText2 {
     color: #dddddd;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    font-size: xx-large;
+    margin-top: 5%;
 }
 
 #titleText2 {
-    margin-top: -10px;
+    margin-top: -20px;
 }
 
 #frontPage {
@@ -57,14 +110,101 @@ body {
 }
 
 #ingredientTB {
-    border-radius: 6px;  /* Rounded corners */
+    border-radius: 20px;  /* Rounded corners */
     width: 200px;
     height: 25px;
+    background-color: black;
+    height: 40px;
+    width: 350px;
+    outline: none;
+    color: #dddddd;
+    padding: 12px 20px;
+    margin-top: 5%;
+    border-color: #cdcdcd;
+    border-width: 2px;
+    border-style: solid;
 }
 
 ::placeholder {
-    text-align: center; 
- }
+    font-family: Arial, Helvetica, sans-serif;
+    color: #cbcbcb;
+    font-weight: bold;
+}
+
+#submitButton {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: #dddddd;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 2%;
+  width: 200px;
+  height: 40px;
+}
+
+#submitButton:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-submitButton 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-submitButton {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+#submitButton:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+#img {
+    margin-top: 5%;
+    max-height: 300px;
+}
 
 .popup {
     visibility: hidden;  /* Hide popup by default */
@@ -92,3 +232,29 @@ body {
     font-size: 16px; /* Optional: Adjust font size */
     font-family: Arial, sans-serif; /* Optional: Set font family */
 }
+
+#contactPage {
+    justify-content: center;
+
+}
+
+#contactTitle {
+    color: #dddddd;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    margin-top: 5%;
+    margin-left: 20%;
+}
+
+.contactTitles {
+    color: #dddddd;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10%;
+}
+
+.contactText {
+    margin-left: 10%;
+    width: 250px;
+    border-radius: 10px;
+}
+
