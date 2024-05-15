@@ -13,6 +13,7 @@ const text = document.getElementsByName("ingredientTB").values;
 const content = document.getElementById("content");
 const sun = document.getElementById("sun");
 const moon = document.getElementById("moon");
+const header = document.getElementById("header");
 
 // AI global variables
 const API_KEY = "APIKEY";
@@ -60,6 +61,7 @@ submitB.addEventListener("click", function(event) {
     }
     frontPage.style.display = "none";
     contactPage.style.display = "none";
+    header.style.display = "none";
     // generateRecipe(prompt1);
 });
 
@@ -71,6 +73,7 @@ returnB.addEventListener("click", function(event) {
     }
     recipePage.style.display = "none";
     contactPage.style.display = "none";
+    header.style.display = "block";
 });
 
 // Gives a new recipe based on the ingredients given

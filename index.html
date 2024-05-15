@@ -9,47 +9,59 @@
 </head>
 <body>
     <header>
-        <div id="container">
-            <div id="titleContainer">
-                <a href="#" id="home">pantry pal</a>
+        <section id="header" style="display: block;">
+            <div id="container">
+                <div id="titleContainer">
+                    <a href="#" id="home">PANTRYPAL</a>
+                </div>
+                <div id="optionsContainer">
+                    <a href="#" id="contact">contact</a>
+                    <a href="#" class="toggleModeBtn">
+                        <i class="fa-regular fa-sun" style="display: block;" id="sun"></i>
+                    </a>
+                    <a href="#" class="toggleModeBtn">
+                        <i class="fa-regular fa-moon" style="display: none;" id="moon"></i>
+                    </a>
+                </div>
             </div>
-            <div id="optionsContainer">
-                <a href="#" id="contact">contact</a>
-                <a href="#" class="toggleModeBtn">
-                    <i class="fa-regular fa-sun" style="display: block;" id="sun"></i>
-                </a>
-                <a href="#" class="toggleModeBtn">
-                    <i class="fa-regular fa-moon" style="display: none;" id="moon"></i>
-                </a>
-            </div>
-        </div>
+        </section>
     </header>
     <main>
         <section id="frontPage" style="display: block;">
             <h1 id="titleText1">Create delicious meals with</h1>
             <h1 id="titleText2">AI powered recipe creation</h1>
-            <input type="text" id="ingredientTB" name="ingredientTB" placeholder="Enter ingredients"><br><br>
+            <input type="text" class="textBox" id="ingredientTB" name="ingredientTB" placeholder="Enter ingredients">
+            <input type="text" class="textBox" id="allergyTB" name="ingredientTB" placeholder="Enter allergies"><br><br>
             <button id="submitButton" type="button">Generate Recipe</button><br>
             <img id="img" src="images/temporary.jpg" alt="temporary image">
         </section>
         <section id="recipePage" style="display: none;">
-            <button id="returnButton" type="button">Return</button>
-            <button id="shuffleButton" type="button">Shuffle</button>
-            <button id="copyButton" type="button">Copy Recipe</button><br><br>
-            <div id="content" class="dynamic-border"></div>
+            <div id="leftRecipeContainer">
+                <button id="returnButton" type="button">Return</button>
+                <button id="shuffleButton" type="button">Shuffle</button>
+                <button id="copyButton" type="button">Copy Recipe</button><br><br>
+            </div>
+            <div id="rightRecipeContainer">
+                <div id="content" class="dynamic-border"></div>
+            </div>
             <div id="popup" class="popup">Copied to clipboard!</div>
         </section>
         <section id="contactPage" style="display: none;">
-            <h1 id="contactTitle">Contact Me</h1>
-            <form method="post" action="https://api.web3forms.com/submit">
-                <p class="contactTitles">Name</p>
-                <input type="text" class="contactText" name="name" style="display: block;" maxlength="30">
-                <p class="contactTitles">Email</p>
-                <input type="text" class="contactText" name="email" style="display: block;" maxlength="30">
-                <p class="contactTitles">Message</p>
-                <textarea name="text" id="messageText" class="contactText" ols="30" rows="10"></textarea><br>
-                <input type="submit" class="submitButton" value="Send"></button>
-            </form>
+            <div id="rightContainer">
+                <h1 id="contactTitle">Contact Me</h1>
+                <form method="post" action="https://api.web3forms.com/submit">
+                    <p class="contactTitles">Name</p>
+                    <input type="text" class="contactText" name="name" style="display: block;" maxlength="30">
+                    <p class="contactTitles">Email</p>
+                    <input type="text" class="contactText" name="email" style="display: block;" maxlength="30">
+                    <p class="contactTitles">Message</p>
+                    <textarea name="text" id="messageText" ols="30" rows="10"></textarea><br>
+                    <input type="submit" class="submitButton" value="Send"></button>
+                </form>
+            </div>
+            <div id="leftContainer">
+                <img id="img1" src="images/temporary1.jpg" alt="temporary image1">
+            </div>
         </section>
     </main>
     <script type="importmap">
