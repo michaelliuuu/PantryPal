@@ -9,7 +9,8 @@ const copyB = document.getElementById("copyButton");
 const shuffleB = document.getElementById("shuffleButton");
 const frontPage = document.getElementById("frontPage");
 const recipePage = document.getElementById("recipePage");
-const text = document.getElementsByName("ingredientTB").values;
+const ingredient = document.getElementsByName("ingredientTB").values;
+const allergy = document.getElementsByName("allergyTB").values;
 const content = document.getElementById("content");
 const sun = document.getElementById("sun");
 const moon = document.getElementById("moon");
@@ -19,14 +20,15 @@ const header = document.getElementById("header");
 const API_KEY = "APIKEY";
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-const prompt1 = "Write an indepth recipe with the given ingredients (it assumes you have basic seasoning), without adding ingredients that you don't have: ";
-const prompt2 = "With this given list of ingredients, create a new indepth recipe that is different from the previous one?";
+const prompt1 = "Create a basic recipe with the given ingredients (it assumes you have basic seasoning), without adding extra ingredients that are not listed: ";
+const prompt2 = ", and here are the food allergies that cannot be part of the recipe: "
+const prompt3 = "With this given list of ingredients, create a new indepth recipe that is different from the previous one?";
 
 // Generates a recipe based off text in textbox
-async function generateRecipe(prompt) {
+async function generateRecipe(promptOne, promptTwo) {
     content.innerText = "Loading...";
 
-    let userPrompt = prompt + text;
+    let userPrompt = promptOne + ingredient + promptTwo + allergy;
     let result = await model.generateContent(prompt);
     let response = await result.response;
     let aiResponse = response.text();
@@ -35,7 +37,7 @@ async function generateRecipe(prompt) {
     content.innerText = aiResponse;
 }
 
-// Copies text and shows popup
+// Copies recipe and shows popup
 function copyText() {
     navigator.clipboard.writeText(content.innerText).then(() => {
         const popup = document.getElementById("popup");
@@ -78,7 +80,7 @@ returnB.addEventListener("click", function(event) {
 
 // Gives a new recipe based on the ingredients given
 shuffleB.addEventListener("click", function(event) {
-    generateRecipe(prompt2);
+    generateRecipe(prompt3);
 });
 
 // Button that copies recipe
