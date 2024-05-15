@@ -74,6 +74,10 @@ body {
     .contactTitles {
         color: black;
     }
+
+    .dynamic-border {
+        color: black;
+    }
 }
 
 .dark-mode {
@@ -109,6 +113,10 @@ body {
     }
 
     .contactTitles {
+        color: #dddddd;
+    }
+
+    .dynamic-border {
         color: #dddddd;
     }
 }
@@ -275,17 +283,13 @@ body {
 }
 
 .dynamic-border {
-    border: 2px solid black; /* Style the border as needed */
     display: inline-block; /* Ensures the div does not take full width */
     padding: 10px; /* Adds some spacing between the text and the border */
     margin: 10px; /* Optional: Adds space around the div */
     font-size: 16px; /* Optional: Adjust font size */
     font-family: Arial, sans-serif; /* Optional: Set font family */
+    color: #dddddd;
 }
-
-/* #contactPage {
-    margin-top: 20px;
-} */
 
 #contactTitle {
     color: #dddddd;

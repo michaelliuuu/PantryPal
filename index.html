@@ -31,7 +31,7 @@
             <h1 id="titleText1">Create delicious meals with</h1>
             <h1 id="titleText2">AI powered recipe creation</h1>
             <input type="text" class="textBox" id="ingredientTB" name="ingredientTB" placeholder="Enter ingredients">
-            <input type="text" class="textBox" id="allergyTB" name="ingredientTB" placeholder="Enter food allergies"><br><br>
+            <input type="text" class="textBox" id="allergyTB" name="allergyTB" placeholder="Enter food allergies"><br><br>
             <button id="submitButton" type="button">Generate Recipe</button><br>
             <img id="img" src="images/temporary.jpg" alt="temporary image">
         </section>
@@ -47,11 +47,11 @@
             <form method="post" action="https://api.web3forms.com/submit">
                 <input type="hidden" name="access_key" value="ACCESSKEY">
                 <p class="contactTitles">Name</p>
-                <input type="text" class="contactText" name="name" style="display: block;" maxlength="30">
+                <input type="text" class="contactText" name="name" style="display: block;" maxlength="30" required>
                 <p class="contactTitles">Email</p>
-                <input type="text" class="contactText" name="email" style="display: block;" maxlength="30">
+                <input type="text" class="contactText" name="email" style="display: block;" maxlength="30" required>
                 <p class="contactTitles">Message</p>
-                <textarea name="text" id="messageText" ols="30" rows="10"></textarea><br>
+                <textarea name="text" id="messageText" ols="30" rows="10" required></textarea><br>
                 <input type="submit" class="submitButton" value="Send"></button>
             </form>
         </section>

@@ -9,8 +9,8 @@ const copyB = document.getElementById("copyButton");
 const shuffleB = document.getElementById("shuffleButton");
 const frontPage = document.getElementById("frontPage");
 const recipePage = document.getElementById("recipePage");
-const ingredient = document.getElementsByName("ingredientTB").values;
-const allergy = document.getElementsByName("allergyTB").values;
+const ingredient = document.getElementsByName("ingredientTB")[0].value;
+const allergy = document.getElementsByName("allergyTB")[0].value;
 const content = document.getElementById("content");
 const sun = document.getElementById("sun");
 const moon = document.getElementById("moon");
@@ -19,17 +19,17 @@ const header = document.getElementById("header");
 // AI global variables
 const API_KEY = "APIKEY";
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro"});
 const prompt1 = "Create a basic recipe with the given ingredients (it assumes you have basic seasoning), without adding extra ingredients that are not listed: ";
 const prompt2 = ", and here are the food allergies that cannot be part of the recipe: "
 const prompt3 = "With this given list of ingredients, create a new indepth recipe that is different from the previous one?";
 
 // Generates a recipe based off text in textbox
 async function generateRecipe(promptOne, promptTwo) {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro"});
     content.innerText = "Loading...";
 
     let userPrompt = promptOne + ingredient + promptTwo + allergy;
-    let result = await model.generateContent(prompt);
+    let result = await model.generateContent(userPrompt);
     let response = await result.response;
     let aiResponse = response.text();
 
@@ -64,7 +64,7 @@ submitB.addEventListener("click", function(event) {
     frontPage.style.display = "none";
     contactPage.style.display = "none";
     header.style.display = "none";
-    // generateRecipe(prompt1);
+    generateRecipe(prompt1, prompt2);
 });
 
 // Goes back to front page so user can change ingredients
@@ -80,7 +80,7 @@ returnB.addEventListener("click", function(event) {
 
 // Gives a new recipe based on the ingredients given
 shuffleB.addEventListener("click", function(event) {
-    generateRecipe(prompt3);
+    generateRecipe(prompt3, prompt2);
 });
 
 // Button that copies recipe
