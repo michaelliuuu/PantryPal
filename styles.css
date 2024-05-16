@@ -260,9 +260,9 @@ body {
     border-radius: 10px;
 }
 
-#img, #img1 {
+#img{
     margin-top: 5%;
-    max-height: 300px;
+    max-height: 700px;
 }
 
 .popup {

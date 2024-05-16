@@ -9,8 +9,6 @@ const copyB = document.getElementById("copyButton");
 const shuffleB = document.getElementById("shuffleButton");
 const frontPage = document.getElementById("frontPage");
 const recipePage = document.getElementById("recipePage");
-const ingredient = document.getElementsByName("ingredientTB")[0].value;
-const allergy = document.getElementsByName("allergyTB")[0].value;
 const content = document.getElementById("content");
 const sun = document.getElementById("sun");
 const moon = document.getElementById("moon");
@@ -26,9 +24,11 @@ const prompt3 = "With this given list of ingredients, create a new indepth recip
 // Generates a recipe based off text in textbox
 async function generateRecipe(promptOne, promptTwo) {
     const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+    const ingredient = document.getElementsByName("ingredientTB")[0].value;
+    const allergy = document.getElementsByName("allergyTB")[0].value;
     content.innerText = "Loading...";
-
     let userPrompt = promptOne + ingredient + promptTwo + allergy;
+    console.log(userPrompt);
     let result = await model.generateContent(userPrompt);
     let response = await result.response;
     let aiResponse = response.text();
