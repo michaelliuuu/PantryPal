@@ -1,0 +1,4 @@
+pp-backend/node_modules
+pp-backend/.env
+.DS_Store
+.vscode

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PantryPal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <section id="header">
+            <div id="container">
+                <div id="titleContainer">
+                    <a href="/pp-frontend/index.html" id="home">PANTRYPAL</a>
+                </div>
+                <div id="optionsContainer">
+                    <a href="/pp-frontend/contact.html" id="contact">contact</a>
+                    <a href="#" class="toggleModeBtn">
+                        <i class="fa-regular fa-sun" style="display: block;" id="sun"></i>
+                    </a>
+                    <a href="#" class="toggleModeBtn">
+                        <i class="fa-regular fa-moon" style="display: none;" id="moon"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section id="contactPage">
+            <h1 id="contactTitle">Contact Me</h1>
+            <form method="post" action="https://api.web3forms.com/submit">
+                <input type="hidden" name="access_key" value="403115ff-fa17-470c-8527-47af5cc5a114">
+                <p class="contactTitles">Name</p>
+                <input type="text" class="contactText" name="name" style="display: block;" maxlength="30" required>
+                <p class="contactTitles">Email</p>
+                <input type="text" class="contactText" name="email" style="display: block;" maxlength="30" required>
+                <p class="contactTitles">Message</p>
+                <textarea name="text" id="messageText" ols="30" rows="10" required></textarea><br>
+                <input type="submit" class="submitButton" value="Send"></button>
+            </form>
+        </section>
+    </main>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script type="module" src="scripts.js"></script>
+</body>
+</html>

@@ -1,5 +1,3 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
 // Global variables
 const submitB = document.getElementById("submitButton");
 const returnB = document.getElementById("returnButton");
@@ -14,28 +12,37 @@ const sun = document.getElementById("sun");
 const moon = document.getElementById("moon");
 const header = document.getElementById("header");
 
-// AI global variables
-const API_KEY = "APIKEY";
-const genAI = new GoogleGenerativeAI(API_KEY);
+// AI script prompts
 const prompt1 = "Create a basic recipe with the given ingredients (it assumes you have basic seasoning), without adding extra ingredients that are not listed: ";
 const prompt2 = ", and here are the food allergies that cannot be part of the recipe: "
 const prompt3 = "With this given list of ingredients, create a new indepth recipe that is different from the previous one?";
 
-// Generates a recipe based off text in textbox
-async function generateRecipe(promptOne, promptTwo) {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+const BACKEND_URL = "https://ai-chatbot-tgcl.onrender.com"  // Add your own backend server
+const API_URL = `${BACKEND_URL}/chat`;
+
+// Generate a bot response from Gemini
+async function generateRecipe() {
     const ingredient = document.getElementsByName("ingredientTB")[0].value;
     const allergy = document.getElementsByName("allergyTB")[0].value;
-    content.innerText = "Loading...";
-    let userPrompt = promptOne + ingredient + promptTwo + allergy;
-    console.log(userPrompt);
-    let result = await model.generateContent(userPrompt);
-    let response = await result.response;
-    let aiResponse = response.text();
+    let userPrompt = prompt1 + ingredient + prompt2 + allergy;
+    // content.innerText = "Generating recipe...";
 
-    // console.log(aiResponse);
-    content.innerText = aiResponse;
-}
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userPrompt })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+
+        content.innerText = data.response;
+    } catch (error) {
+        console.log(error);
+        content.innerText = "Error fetching response. Please try again!";
+    }
+};
 
 // Copies recipe and shows popup
 function copyText() {
@@ -55,58 +62,43 @@ function copyText() {
     });
 }
 
-// Goes to recipe page and generates a recipe from the input in text box
-submitB.addEventListener("click", function(event) {
-    event.preventDefault();
-    if (recipePage.style.display === "none") {
-        recipePage.style.display = "block";
-    }
-    frontPage.style.display = "none";
-    contactPage.style.display = "none";
-    header.style.display = "none";
-    generateRecipe(prompt1, prompt2);
-});
+// Generates a recipe from the input in text box
+// submitB.addEventListener("click", function(event) {
+//     event.preventDefault();
+//     console.log("first");
+//     generateRecipe();
+// });
+
+// document.addEventListener("click", function(e) {
+//     e.preventDefault();
+//     generateRecipe();
+// });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     generateRecipe();
+//   });
 
 // Goes back to front page so user can change ingredients
-returnB.addEventListener("click", function(event) {
-    event.preventDefault();
-    if (frontPage.style.display === "none") {
-        frontPage.style.display = "block";
-    }
-    recipePage.style.display = "none";
-    contactPage.style.display = "none";
-    header.style.display = "block";
-});
+// returnB.addEventListener("click", function(event) {
+//     event.preventDefault();
+//     if (frontPage.style.display === "none") {
+//         frontPage.style.display = "block";
+//     }
+//     recipePage.style.display = "none";
+//     contactPage.style.display = "none";
+//     header.style.display = "block";
+// });
 
 // Gives a new recipe based on the ingredients given
-shuffleB.addEventListener("click", function(event) {
-    generateRecipe(prompt3, prompt2);
-});
+// shuffleB.addEventListener("click", function(event) {
+//     generateRecipe(prompt3, prompt2);
+// });
 
 // Button that copies recipe
-copyB.addEventListener("click", function(event) {
-    copyText();
-});
+// copyB.addEventListener("click", function(event) {
+//     copyText();
+// });
 
-// Goes to contact page
-contactLink.addEventListener("click", function(event) {
-    event.preventDefault();
-    if (contactPage.style.display === "none") {
-        contactPage.style.display = "block";
-    }
-    recipePage.style.display = "none";
-    frontPage.style.display = "none";
-});
-
-// Goes back to front page
-homeLink.addEventListener("click", function(event) {
-    event.preventDefault();
-    if (frontPage.style.display === "none") {
-        frontPage.style.display = "block";
-    }
-    recipePage.style.display = "none";
-    contactPage.style.display = "none";
-});
 
 // Light mode
 sun.addEventListener("click", function(event) {

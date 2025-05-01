@@ -5,37 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PantryPal</title>
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
-        <section id="header" style="display: block;">
+        <section id="header">
             <div id="container">
                 <div id="titleContainer">
-                    <a href="#" id="home">PANTRYPAL</a>
+                    <a href="/pp-frontend/index.html" id="home">PANTRYPAL</a>
                 </div>
                 <div id="optionsContainer">
-                    <a href="#" id="contact">contact</a>
-                    <a href="#" class="toggleModeBtn">
+                    <a href="/pp-frontend/contact.html" id="contact">contact</a>
+                    <!-- <a href="#" class="toggleModeBtn">
                         <i class="fa-regular fa-sun" style="display: block;" id="sun"></i>
-                    </a>
-                    <a href="#" class="toggleModeBtn">
+                    </a> -->
+                    <i class="fa-regular fa-sun" style="display: block;" id="sun"></i>
+                    <!-- <a href="#" class="toggleModeBtn">
                         <i class="fa-regular fa-moon" style="display: none;" id="moon"></i>
-                    </a>
+                    </a> -->
+                    <i class="fa-regular fa-moon" style="display: none;" id="moon"></i>
                 </div>
             </div>
         </section>
     </header>
     <main>
-        <section id="frontPage" style="display: block;">
+        <section id="frontPage">
             <h1 id="titleText1">Create delicious meals with</h1>
             <h1 id="titleText2">AI powered recipe creation</h1>
             <input type="text" class="textBox" id="ingredientTB" name="ingredientTB" placeholder="Enter ingredients">
             <input type="text" class="textBox" id="allergyTB" name="allergyTB" placeholder="Enter food allergies"><br><br>
-            <button id="submitButton" type="button">Generate Recipe</button><br>
+            <a href="/pp-frontend/recipe.html">
+                <button id="submitButton" type="button">Generate Recipe</button><br>
+            </a>
             <img id="img" src="images/pantry.png" alt="recipe img">
         </section>
-        <section id="recipePage" style="display: none;">
+        <!-- <section id="recipePage" style="display: none;">
             <button id="returnButton" type="button">Home</button>
             <button id="shuffleButton" type="button">Shuffle</button>
             <button id="copyButton" type="button">Copy Recipe</button><br><br>
@@ -45,7 +49,7 @@
         <section id="contactPage" style="display: none;">
             <h1 id="contactTitle">Contact Me</h1>
             <form method="post" action="https://api.web3forms.com/submit">
-                <input type="hidden" name="access_key" value="ACCESSKEY">
+                <input type="hidden" name="access_key" value="403115ff-fa17-470c-8527-47af5cc5a114">
                 <p class="contactTitles">Name</p>
                 <input type="text" class="contactText" name="name" style="display: block;" maxlength="30" required>
                 <p class="contactTitles">Email</p>
@@ -54,22 +58,8 @@
                 <textarea name="text" id="messageText" ols="30" rows="10" required></textarea><br>
                 <input type="submit" class="submitButton" value="Send"></button>
             </form>
-        </section>
+        </section> -->
     </main>
-    <script type="importmap">
-        {
-          "imports": {
-            "@google/generative-ai": "https://esm.run/@google/generative-ai"
-          }
-        }
-    </script>
-    <script type="module">
-        import { GoogleGenerativeAI } from "@google/generative-ai";
-        const API_KEY = "APIKEY";
-        const genAI = new GoogleGenerativeAI(API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-    </script>
-    <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script type="module" src="scripts.js"></script>
 </body>
