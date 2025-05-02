@@ -14,19 +14,26 @@ const header = document.getElementById("header");
 
 // AI script prompts
 const prompt1 = "Create a basic recipe with the given ingredients (it assumes you have basic seasoning), without adding extra ingredients that are not listed: ";
-const prompt2 = ", and here are the food allergies that cannot be part of the recipe: "
-const prompt3 = "With this given list of ingredients, create a new indepth recipe that is different from the previous one?";
+const prompt2 = ", and here are the food allergies that cannot be part of the recipe, if any are listed: "
+const prompt3 = "With this given list of ingredients, create a new basic recipe that is different from the previous one? When giving the recipe, make it concise (without any filler words)";
+let userPrompt = "";
 
 const BACKEND_URL = "https://ai-chatbot-tgcl.onrender.com"  // Add your own backend server
 const API_URL = `${BACKEND_URL}/chat`;
 
-// Generate a bot response from Gemini
-async function generateRecipe() {
-    const ingredient = document.getElementsByName("ingredientTB")[0].value;
-    const allergy = document.getElementsByName("allergyTB")[0].value;
-    let userPrompt = prompt1 + ingredient + prompt2 + allergy;
-    // content.innerText = "Generating recipe...";
+// Saves ingredient and allergies in text area when moving to recipe.html
+if (window.location.pathname.includes("recipe.html")) {
+    const savedIngredient = localStorage.getItem("ingredient") || "";
+    const savedAllergy = localStorage.getItem("allergy") || "";
 
+    if (savedIngredient || savedAllergy) {
+        userPrompt = prompt1 + savedIngredient + prompt2 + savedAllergy;
+        generateRecipeWithPrompt(userPrompt);
+    }
+}
+
+// Generate a bot response from Gemini
+async function generateRecipeWithPrompt(userPrompt) {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
@@ -42,7 +49,8 @@ async function generateRecipe() {
         console.log(error);
         content.innerText = "Error fetching response. Please try again!";
     }
-};
+}
+
 
 // Copies recipe and shows popup
 function copyText() {
@@ -62,42 +70,34 @@ function copyText() {
     });
 }
 
+
 // Generates a recipe from the input in text box
-// submitB.addEventListener("click", function(event) {
-//     event.preventDefault();
-//     console.log("first");
-//     generateRecipe();
-// });
-
-// document.addEventListener("click", function(e) {
-//     e.preventDefault();
-//     generateRecipe();
-// });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     generateRecipe();
-//   });
-
-// Goes back to front page so user can change ingredients
-// returnB.addEventListener("click", function(event) {
-//     event.preventDefault();
-//     if (frontPage.style.display === "none") {
-//         frontPage.style.display = "block";
-//     }
-//     recipePage.style.display = "none";
-//     contactPage.style.display = "none";
-//     header.style.display = "block";
-// });
+if (submitB) {
+    submitB.addEventListener("click", function(event) {
+        event.preventDefault();
+        const ingredient = document.getElementById("ingredientTB")?.value || "";
+        const allergy = document.getElementById("allergyTB")?.value || "";
+        localStorage.setItem("ingredient", ingredient);
+        localStorage.setItem("allergy", allergy);
+        window.location.href = "/pp-frontend/recipe.html";
+    });
+}
 
 // Gives a new recipe based on the ingredients given
-// shuffleB.addEventListener("click", function(event) {
-//     generateRecipe(prompt3, prompt2);
-// });
+if (shuffleB) {
+    shuffleB.addEventListener("click", function(event) {
+        event.preventDefault();
+        content.innerText = "Generating recipePage...";
+        generateRecipeWithPrompt(userPrompt);
+    });
+}
 
 // Button that copies recipe
-// copyB.addEventListener("click", function(event) {
-//     copyText();
-// });
+if (copyB) {
+    copyB.addEventListener("click", function(event) {
+        copyText();
+    });
+}
 
 
 // Light mode
